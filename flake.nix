@@ -60,6 +60,21 @@
         system = "aarch64-linux";
         modules = [
           ./hosts/nixos-snowos/configuration.nix
+          home-manager-nixos.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.snow = {
+              imports = [
+                ./home/snow/home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
+            home-manager.backupFileExtension = "backup";
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
       };
     };
