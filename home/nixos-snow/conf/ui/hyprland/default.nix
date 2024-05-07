@@ -1,8 +1,4 @@
 { pkgs, config,... }:
-
-let
-  swww_script = import ../../../misc/swww.nix {inherit pkgs; };
-in
 {
   imports = [
     (import ./keybinds.nix { inherit pkgs; })
@@ -11,6 +7,7 @@ in
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
    enable = true;
+   catppuccin.enable = true;
    # package = hyprland.packages.${pkgs.system}.hyprland;
    # package = pkgs.hyprland;
     systemd.enable = true;
@@ -23,10 +20,7 @@ in
 
 	gaps_in = 4;
 	gaps_out = 8;
-        resize_on_border = true;
-	
-	"col.active_border" = "0xFF${config.colorScheme.colors.base07}";
-	"col.inactive_border" = "0xFF${config.colorScheme.colors.base00}";
+  resize_on_border = true;
 
 	layout = "master";
     };
@@ -55,8 +49,6 @@ in
 	drop_shadow = true;
 	shadow_range = 6;
 	shadow_render_power = 1;
-        "col.shadow" = "0x${config.colorScheme.colors.base00}";
-        "col.shadow_inactive" = "0x50000000";
         
 	blur = {
           enabled = true;
@@ -93,8 +85,6 @@ in
       
       exec-once = [ 
         "waybar &"
-	"swww init"
-	"bash ${swww_script.swww_script}/bin/swww_script \"$HOME/wallpapers\""
       ];
     };
   };

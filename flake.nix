@@ -66,7 +66,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.snow = {
               imports = [
-                ./home/snow/home.nix
+                ./home/nixos-snow/home.nix
                 catppuccin.homeManagerModules.catppuccin
               ];
             };

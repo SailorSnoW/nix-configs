@@ -6,8 +6,8 @@
     (import ../shared/shared-config.nix { inherit pkgs; })
   ];
 
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "nodev";
 
   nix.settings = {
     trusted-users = [ "root" "@wheel" ];

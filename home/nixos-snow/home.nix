@@ -6,7 +6,7 @@
     (import ../snow/home.nix { inherit config pkgs lib; } )
     (import ./conf/ui/hyprland/default.nix { inherit pkgs config; })
     (import ./conf/ui/wlogout/default.nix { inherit pkgs; })
-    (import ./conf/ui/waybar/default.nix { inherit pkgs hyprland lib config; })
+    (import ./conf/ui/waybar/default.nix { inherit pkgs lib config; })
     (import ./conf/utils/rofi/default.nix { inherit pkgs; })
-  ]
+  ];
 }
