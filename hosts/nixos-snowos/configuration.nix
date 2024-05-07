@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, lib, config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     # Import shared configuration module
-    (import ../shared/shared-config.nix { inherit pkgs; })
+    (import ../shared/shared-config.nix { inherit inputs pkgs lib config; })
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -117,6 +117,14 @@
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --user-menu --remember --cmd Hyprland";
           user = "snow";
         };
+      };
+    };
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+        # Remove if you want to SSH using passwords
+        PasswordAuthentication = false;
       };
     };
   };

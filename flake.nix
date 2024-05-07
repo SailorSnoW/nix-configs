@@ -22,18 +22,22 @@
     home-manager-nixos.inputs.nixpkgs.follows = "nixos-unstable";
   };
 
-  outputs = inputs@{ 
+  outputs = {
+    self,
     nixpkgs-darwin, 
     home-manager-darwin, 
     nix-darwin, 
     nixos-unstable, 
     home-manager-nixos,
     catppuccin,
-     ... 
-  }: {
+    ... 
+  } @ inputs: let
+    inherit (self) outputs;
+  in {
     darwinConfigurations = {
       darwin-snowos = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/darwin-snowos/configuration.nix
           home-manager-darwin.darwinModules.home-manager
@@ -58,6 +62,7 @@
     nixosConfigurations = {
       nixos-snowos = nixos-unstable.lib.nixosSystem {
         system = "aarch64-linux";
+        specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/nixos-snowos/configuration.nix
           home-manager-nixos.nixosModules.home-manager

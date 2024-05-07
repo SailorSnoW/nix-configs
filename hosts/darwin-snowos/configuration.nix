@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, lib, config, ... }:
 {
       imports = [
         # Import shared configuration module
-        (import ../shared/shared-config.nix { inherit pkgs; })
+        (import ../shared/shared-config.nix { inherit inputs pkgs lib config; })
       ];
 
       users.users.snow = {
