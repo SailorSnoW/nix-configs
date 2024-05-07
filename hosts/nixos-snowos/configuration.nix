@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./hardware-configuration.nix
     # Import shared configuration module
     (import ../shared/shared-config.nix { inherit pkgs; })
   ];
@@ -44,7 +45,7 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
-  console.keyMap = "fr";
+  # console.keyMap = "fr";
   console.useXkbConfig = true;
   programs.hyprland.enable = true;
 
@@ -94,21 +95,20 @@
     upower.enable = true;
     xserver = {
       enable = true;
-      layout = "fr";
-      xkbVariant = "mac";
+      xkb.layout = "fr";
+      xkb.variant = "mac";
      # desktopManager = {
      #   plasma5.enable = true;
      # };
-      displayManager.sddm.enable = true;
-      libinput = {
-        enable = true;
-        touchpad = {
-          tapping = true;
-          middleEmulation = true;
-          naturalScrolling = true;
-        };
+    };
+    displayManager.sddm.enable = true;
+    libinput = {
+      enable = true;
+      touchpad = {
+        tapping = true;
+        middleEmulation = true;
+        naturalScrolling = true;
       };
-
     };
     greetd = {
       enable = true;
