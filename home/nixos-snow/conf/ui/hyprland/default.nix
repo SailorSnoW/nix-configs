@@ -14,13 +14,12 @@
     settings = {
       xwayland.force_zero_scaling = true;
 
-      monitor = ",preferred,auto,auto";
+      monitor = ",preferred,auto,1";
       general = {
         border_size = 2;
-
-	gaps_in = 4;
-	gaps_out = 8;
-  resize_on_border = true;
+	      gaps_in = 4;
+	      gaps_out = 8;
+        resize_on_border = true;
 
 	layout = "master";
     };

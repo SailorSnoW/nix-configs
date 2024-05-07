@@ -65,6 +65,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/nixos-snowos/configuration.nix
+          catppuccin.nixosModules.catppuccin
           home-manager-nixos.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
