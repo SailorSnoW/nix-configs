@@ -41,6 +41,9 @@
           ShowPathbar = true;
           FXEnableExtensionChangeWarning = false;
         };
+        NSGlobalDomain = {
+          "com.apple.swipescrolldirection" = false;
+        };
       };
 
       # Enable TouchId for sudo
