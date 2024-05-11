@@ -6,16 +6,15 @@
     (import ./misc/neofetch.nix { inherit pkgs lib config; })
     (import ./conf/term/kitty/default.nix { inherit pkgs config; })
     (import ./conf/utils/vscode/default.nix { inherit pkgs; })
+    (import ./conf/editor/helix/default.nix { inherit pkgs; })
   ];
 
   # Theming
   catppuccin.flavour = "mocha";
-  programs.lazygit.catppuccin.enable = true;
-  programs.tmux.catppuccin.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -47,20 +46,26 @@
     lazygit
     rustup
     neofetch
-    lunarvim
     bun
+    nixfmt-classic
   ];
-  
+
   programs.git = {
     enable = true;
     userEmail = "sailorsnow@pm.me";
     userName = "SailorSnoW";
   };
 
-  # Add stuff for your user as you see fit:
-  programs.neovim = {
+  #  programs.zellij = {
+  #    enable = true;
+  #    catppuccin.enable = true;
+  #    enableZshIntegration = true;
+  #  };
+
+  programs.yazi = {
     enable = true;
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
+    enableZshIntegration = true;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -88,9 +93,7 @@
   #  /etc/profiles/per-user/davish/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    EDITOR = "lvim";
-  };
+  home.sessionVariables = { };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
