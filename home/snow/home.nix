@@ -47,7 +47,10 @@
     rustup
     neofetch
     bun
+    #  LSP
     nixfmt-classic
+    nil
+    marksman
   ];
 
   programs.git = {
@@ -56,11 +59,11 @@
     userName = "SailorSnoW";
   };
 
-  #  programs.zellij = {
-  #    enable = true;
-  #    catppuccin.enable = true;
-  #    enableZshIntegration = true;
-  #  };
+  programs.zellij = {
+    enable = true;
+    catppuccin.enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.yazi = {
     enable = true;

@@ -9,6 +9,7 @@
         insert = "bar";
         select = "underline";
       };
+      editor.lsp.display-messages = true;
     };
     languages.language = [{
       name = "nix";
