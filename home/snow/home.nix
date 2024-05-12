@@ -51,6 +51,8 @@
     nixfmt-classic
     nil
     marksman
+    taplo
+    solc
   ];
 
   programs.git = {
